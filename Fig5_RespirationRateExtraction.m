@@ -62,7 +62,7 @@ for subjnumber= subjects
     %Perform Welch's method and optain peak locations
     allPeakLoc = [];
     parfor ii = 1:92
-        [pwel,fwel] = pwelch(dtrendHR(:,ii),6400 , [], [], 50, 'onesided');
+        [pwel,fwel] = pwelch(dtrendHR(:,ii),17400 , [], [], 50, 'onesided');
         [welpks,wellocs] = findpeaks(pwel, 'MinPeakHeight', peakcutoff*max(pwel));
         if length(wellocs)~=1
             allPeakLoc = [allPeakLoc 0];
@@ -192,4 +192,5 @@ set(findall(hfig,'-property','Box'),'Box','off') % optional
 pos = get(hfig,'Position');
 set(hfig,'PaperPositionMode','Auto','PaperUnits','centimeters','PaperSize',[pos(3), pos(4)])
 axis square
+
 set(gca,'fontsize',14)
